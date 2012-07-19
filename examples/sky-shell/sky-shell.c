@@ -45,6 +45,44 @@
 
 #include "net/rime.h"
 
+#define DEBUG_SNIFFERS 1
+
+/*---------------------------------------------------------------------------*/
+#if DEBUG_SNIFFERS
+static void
+input_sniffer(void)
+{
+  int i;
+  uint8_t *dataptr;
+
+  printf("x %d ", packetbuf_totlen());
+  dataptr = packetbuf_dataptr();
+  printf("%02x", dataptr[0]);
+  /*  if(dataptr[0] == 18) {*/
+    for(i = 1; i < packetbuf_totlen(); ++i) {
+      printf("%02x", dataptr[i]);
+    }
+    /*  }*/
+  printf("(%c", dataptr[0]);
+  /*  if(dataptr[0] == 18) {*/
+    for(i = 1; i < packetbuf_totlen(); ++i) {
+      printf("%c", dataptr[i]);
+    }
+    /*  }*/
+  printf(")\n");
+}
+/*---------------------------------------------------------------------------*/
+static void
+output_sniffer(void)
+{
+  uint8_t *dataptr;
+  printf("- %d ", packetbuf_totlen());
+  dataptr = packetbuf_dataptr();
+  printf("%02x\n", dataptr[0]);
+}
+/*---------------------------------------------------------------------------*/
+RIME_SNIFFER(s, input_sniffer, output_sniffer);
+#endif /* DEBUG_SNIFFERS */
 /*---------------------------------------------------------------------------*/
 PROCESS(sky_shell_process, "Sky Contiki shell");
 AUTOSTART_PROCESSES(&sky_shell_process);
@@ -69,7 +107,7 @@ PROCESS_THREAD(sky_shell_process, ev, data)
 #endif /* WITH_PERIODIC_DEBUG */
 
   serial_shell_init();
-  shell_blink_init();
+  //shell_blink_init();
   /*  shell_file_init();
       shell_coffee_init();*/
   /*  shell_download_init();
@@ -81,8 +119,8 @@ PROCESS_THREAD(sky_shell_process, ev, data)
   /*  shell_rime_ping_init();
   shell_rime_debug_init();
   shell_rime_debug_runicast_init();*/
-  /*  shell_rime_sniff_init();*/
-  shell_sky_init();
+  shell_rime_sniff_init();
+  //shell_sky_init();
   shell_power_init();
   shell_powertrace_init();
   /*  shell_base64_init();*/

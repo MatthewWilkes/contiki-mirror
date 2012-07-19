@@ -1,7 +1,7 @@
 CONTIKI_PROJECT = sky-shell
 all: $(CONTIKI_PROJECT)
 
-APPS = serial-shell powertrace collect-view
+APPS = serial-shell powertrace collect-view shell-rime-sniff clock
 CONTIKI = ../..
 
 include $(CONTIKI)/Makefile.include

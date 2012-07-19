@@ -1,1 +1,1 @@
-TARGET = sky
+TARGET = avr-atmega128rfa1

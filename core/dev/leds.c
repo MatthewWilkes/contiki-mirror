@@ -75,14 +75,14 @@ leds_init(void)
 void
 leds_blink(void)
 {
-  /* Blink all leds. */
+  /* Blink all leds. 
   unsigned char inv;
   inv = ~(leds ^ invert);
   leds_invert(inv);
 
   clock_delay(400);
 
-  leds_invert(inv);
+  leds_invert(inv);*/
 }
 /*---------------------------------------------------------------------------*/
 unsigned char
