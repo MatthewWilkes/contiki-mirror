@@ -76,8 +76,8 @@ static FILE slip_stdout = FDEV_SETUP_STREAM(slip_putchar, NULL,
 void
 slip_arch_init(unsigned long ubr)
 {
-  rs232_set_input(SLIP_PORT, slip_input_byte);
-  stdout = &slip_stdout;
+  //rs232_set_input(SLIP_PORT, slip_input_byte);
+  //stdout = &slip_stdout;
 }
 /*---------------------------------------------------------------------------*/
 /*

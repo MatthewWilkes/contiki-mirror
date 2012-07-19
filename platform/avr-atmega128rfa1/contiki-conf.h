@@ -45,7 +45,7 @@
 #define PLATFORM_NAME  "RFA1"
 #define PLATFORM_TYPE  ATMEGA128RFA1
 #ifndef F_CPU
-#define F_CPU          8000000UL
+#define F_CPU          16000000UL
 #endif
 
 #include <stdint.h>
@@ -188,7 +188,7 @@ typedef unsigned short uip_stats_t;
 #define NETSTACK_CONF_RDC         sicslowmac_driver
 #define NETSTACK_CONF_FRAMER      framer_802154
 #define NETSTACK_CONF_RADIO       rf230_driver
-#define CHANNEL_802_15_4          26
+#define CHANNEL_802_15_4          0xC
 /* AUTOACK receive mode gives better rssi measurements, even if ACK is never requested */
 #define RF230_CONF_AUTOACK        1
 /* Request 802.15.4 ACK on all packets sent (else autoretry). This is primarily for testing. */
@@ -245,7 +245,7 @@ typedef unsigned short uip_stats_t;
 #define RIMESTATS_CONF_ON                      1
 #define NETSTACK_CONF_FRAMER      framer_802154
 #define NETSTACK_CONF_RADIO       rf230_driver
-#define CHANNEL_802_15_4          26
+#define CHANNEL_802_15_4          0xC
 /* The radio needs to interrupt during an rtimer interrupt */
 #define RTIMER_CONF_NESTED_INTERRUPTS 1
 #define RF230_CONF_AUTOACK        1
@@ -283,7 +283,7 @@ typedef unsigned short uip_stats_t;
 #define NETSTACK_CONF_RDC         cxmac_driver
 #define NETSTACK_CONF_FRAMER      framer_802154
 #define NETSTACK_CONF_RADIO       rf230_driver
-#define CHANNEL_802_15_4          26
+#define CHANNEL_802_15_4          0xC
 #define RF230_CONF_AUTOACK        1
 #define SICSLOWPAN_CONF_FRAG      1
 #define SICSLOWPAN_CONF_MAXAGE    3

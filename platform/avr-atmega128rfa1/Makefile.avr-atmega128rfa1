@@ -9,11 +9,11 @@ CONTIKI_TARGET_SOURCEFILES += button-sensor.c sensors.c slip_uart0.c slip.c
 CONTIKIAVR=$(CONTIKI)/cpu/avr
 CONTIKIBOARD=.
 
-CONTIKI_PLAT_DEFS = -DF_CPU=8000000UL -DAUTO_CRC_PADDING=2
+CONTIKI_PLAT_DEFS = -DF_CPU=16000000UL -DAUTO_CRC_PADDING=2
 
 MCU=atmega128rfa1
 
-AVRDUDE_PROGRAMMER=jtag2
+AVRDUDE_PROGRAMMER=dragon_isp
 
 # For usb devices, you may either use PORT=usb, or (e.g. if you have more than one
 # programmer connected) you can use the following trick to find out the serial number:
@@ -25,7 +25,7 @@ AVRDUDE_PORT=usb:00B000000D79
 
 # Additional avrdude options
 # Verify off
-AVRDUDE_OPTIONS=-V
+AVRDUDE_OPTIONS=-V -B 8
 
 
 include $(CONTIKIAVR)/Makefile.avr
